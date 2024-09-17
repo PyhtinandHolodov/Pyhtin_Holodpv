@@ -1,7 +1,15 @@
+from django.template.response import TemplateResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 def index(request):
- return HttpResponse("<h2>Главная</h2>")
+ header = "Персональные данные" # обычная переменная
+ langs = ["Английский", "Немецкий", "Испанский"] # массив
+ user = {"name": "Максим,", "age": 30} # словарь
+ addr = ("Виноградная", 23, 45) # кортеж
+ data = {"header": header, "langs": langs, "user": user, "address":
+ addr}
+ return TemplateResponse(request, "index.html", data)
+
 def about(request):
  return HttpResponse("<h2>О сайте</h2>")
 def contact(request):
