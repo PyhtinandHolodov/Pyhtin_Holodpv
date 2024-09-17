@@ -1,5 +1,5 @@
 """
-URL configuration for hello project.
+URL configuration for web_1 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,14 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls import re_path
-from firstapp import views
+
 urlpatterns = [
- path('', views.index),
- re_path(r'^about', views.about),
- re_path(r'^contact', views.contact),
- path('products/', views.products), # маршрут по умолчанию
- path('products/<int:productid>/', views.products),
- path('users/', views.users), # маршрут по умолчанию
- path('users/<int:id>/<str:name>/', views.users),
+    path('admin/', admin.site.urls),
 ]
