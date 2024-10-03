@@ -1,6 +1,16 @@
-{% extends "firstapp/base.html" %}
-{% block title %}about{% endblock title %}
-{% block header %}Сведения о компании{% endblock header %}
-{% block content %}
-<p>Интеллектуальные программные системы</p>
-<p>Связка шаблонов about.html и base.html</p>{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Форма Django!</title>
+</head>
+<body>
+ <form method="POST">
+ {% csrf_token %}
+ <table>
+ {{ form }}
+ </table>
+ <input type="submit" value="Отправить" >
+</form>
+</body>
+</html>
