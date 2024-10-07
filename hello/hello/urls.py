@@ -19,7 +19,7 @@ from django.urls import path
 from django.urls import re_path
 from firstapp import views
 from django.views.generic import TemplateView
-import render
+from django.shortcuts import render
 
 def index(request):
  return render(request, "firstapp/index.html")
