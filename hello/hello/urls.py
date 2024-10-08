@@ -29,3 +29,16 @@ urlpatterns = [
  path('contact/', TemplateView.as_view(template_name="firstapp/contact.html",
  extra_context={"work": "Разработка программных продуктов"})),
 ]
+
+from firstapp import views
+urlpatterns = [
+ path('', views.index),
+ path('create/', views.create),
+]
+from firstapp import views
+urlpatterns = [
+ path('', views.index),
+ path('create/', views.create),
+ path('edit/<int:id>/', views.edit),
+ path('delete/<int:id>/', views.delete),
+]
