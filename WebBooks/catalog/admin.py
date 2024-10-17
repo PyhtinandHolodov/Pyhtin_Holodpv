@@ -5,7 +5,7 @@ from.models import Author, Book, Genre, Language, Status, BookInstance
 admin.site.register(Genre)
 admin.site.register(Language)
 admin.site.register(Status)
-#admin.site.register(BookInstance)
+admin.site.register(BookInstance)
 #Определения к классу администратор
 class AuthorAdmin(admin.ModelAdmin):
     pass
@@ -39,3 +39,11 @@ class AuthorAdmin(admin.ModelAdmin):
  list_display = ('last_name', 'first_name')
  fields = ['first_name', 'last_name',
  ('date_of_birth', 'date_of_death')]
+
+ class BooksInstanceInline(admin.TabularInline):
+    model = BookInstance
+
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+ list_display = ('title', 'author', 'display_genre')
+ inlines = [BookInstance]

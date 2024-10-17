@@ -122,3 +122,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Получение значения сессии при помощи ключа('mу_саr')
+# Если такого ключа нет, то возникнет ошибка KeyError
+my_car = request.session[ 'my_car']
+# Получение значения сессии. Если значения не существует,
+# то вернётся значение по умолчанию ( 'mini' )
+2
+mу_car = request. session. get ( 'my_car', 'mini' )
+# Передача значения в сессию request.session['my_car'] = 'mini'
+# Удаление значения из сессии del request. session [ 'my_car' ]
