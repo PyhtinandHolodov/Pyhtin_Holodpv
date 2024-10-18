@@ -34,3 +34,8 @@ urlpatterns = [
  url(r'^book/(?P<pk>\d+)$', views.BookDetailView.as_view(), name='book-detail'),
  url(r'^authors/$', views.AuthorListView.as_view(), name='authors'),
 ]
+from django.urls import path, include
+# Добавление URL-адреса для входа в систему
+urlpatterns += [
+ path('accounts/', include('django.contrib.auth.urls')),
+]

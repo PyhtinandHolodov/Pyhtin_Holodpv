@@ -131,3 +131,7 @@ my_car = request.session[ 'my_car']
 mу_car = request. session. get ( 'my_car', 'mini' )
 # Передача значения в сессию request.session['my_car'] = 'mini'
 # Удаление значения из сессии del request. session [ 'my_car' ]
+
+# Переадресация на главную страницу сайта после входа в систему
+LOGIN_REDIRECT_URL = '/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
