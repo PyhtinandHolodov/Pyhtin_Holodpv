@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-
+from datetime import date
 class Genre(models.Model):
  name = models.CharField(max_length=200,
     help_text=" Введите жанр книги", verbose_name="Жанр книги")
@@ -79,3 +79,29 @@ def __str__(self):
 def display_author(self):
  return ', '.join([author.last_name for author in self.author.all()])
 display_author.short_description = 'Авторы'
+class BookInstance(models.Model):
+ book = models.ForeignKey('Book', on_delete=models.CASCADE,
+ null=True,
+ verbose_name="Название книги")
+ inv_nom = models.CharField(max_length=20, null=True,
+ help_text="Введите инвентарный номер экземпляра",
+ verbose_name="Инвентарный номер")
+ imprint = models.CharField(max_length=200,
+ help_text="Введите издательство и год выпуска",
+ verbose_name="Издательство")
+ status = models.ForeignKey('Status', on_delete=models.CASCADE,
+ null=True,
+ help_text='Изменить состояние экземпляра',
+ verbose_name="Статус экземпляра книги")
+ due_back = models.DateField(null=True, blank=True,
+ help_text="Введите конец срока статуса",
+ verbose_name="Дата окончания статуса")
+ borrower = models.ForeignKey(User, on_delete=models.SET_NULL,
+ null=True, blank=True,
+ verbose_name="Заказчик",
+ help_text='Выберите заказчика книги')
+ @property
+def is_overdue(self):
+    if self.due_back and date.today() > self.due_back:
+        return True
+    return False
