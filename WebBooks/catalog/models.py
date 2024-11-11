@@ -100,8 +100,8 @@ class BookInstance(models.Model):
  null=True, blank=True,
  verbose_name="Заказчик",
  help_text='Выберите заказчика книги')
- @property
+@property
 def is_overdue(self):
-    if self.due_back and date.today() > self.due_back:
-        return True
-    return False
+        if self.due_back and date.today() > self.due_back:
+         return True
+        return False

@@ -47,7 +47,7 @@ Recording a list of packages used in the project
 ```sh
 python -m pip freeze > requirements.txt
 ```
-
+.venv\Scripts\Activate.ps1
 Installing packages used in the project from the list
 ```sh
 python -m pip install -r requirements.txt
